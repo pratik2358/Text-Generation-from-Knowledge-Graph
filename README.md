@@ -26,28 +26,29 @@ The detailed mathematics and procedure is given the the presentation link given 
 
 # Instructions:
 **Training:**
-
-"python3.6 train.py -save <DIR>"
-  
+```
+python3.6 train.py -save <DIR>
+```  
 Use --help for a list of all training options.
 
   
 **Generation:**
-  
-"python3.6 generator.py -save <SAVED MODEL>"
-  
+```
+python3.6 generator.py -save <SAVED MODEL>
+```  
 
 **Evaluation:**
-  
-"python3.6 eval.py <GENERATED TEXTS> <GOLD TARGETS>"
+```
+python3.6 eval.py <GENERATED TEXTS> <GOLD TARGETS>
+```
   
 # Citation
   
-  @inproceedings{koncel2019text,
+```
+@inproceedings{koncel2019text,
   title={{T}ext {G}eneration from {K}nowledge {G}raphs with {G}raph {T}ransformers},
   author={Rik Koncel-Kedziorski, Dhanush Bekal, Yi Luan, Mirella Lapata, and Hannaneh Hajishirzi},
   booktitle={NAACL},
   year={2019}
 }
-
- 
+```
