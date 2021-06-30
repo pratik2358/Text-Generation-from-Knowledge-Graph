@@ -80,8 +80,7 @@ def pargs():
   #inference
   parser.add_argument("-max",default=200,type=int,help="max length of generation")
   parser.add_argument("-test",action='store_true')
-  #parser.add_argument("-sample",action='store_true')
-  parser.add_argument("-inputs",default="../data/fullGraph.test.tsv",type=str)
+  parser.add_argument("-inputs",default="../data/preprocessed.test.tsv",type=str)
 
   parser.add_argument("-ckpt",default=None,type=str,help='load checkpoint')
   parser.add_argument("-entdetach",action='store_true',help='dont backprop into entity embeddings')
