@@ -213,6 +213,28 @@ class dataset:
     ds.fields["sordertgt"] = data.RawField()
     dat_iter = data.Iterator(ds,1,device=args.device,sort_key=lambda x:len(x.src), train=False, sort=False)
     return dat_iter
+  
+  
+  def mktestset2(self, args):
+    path = args.inputs
+    fields=self.fields
+    ds = data.TabularDataset(path=path, format='tsv',fields=fields)
+    ds.fields["rawent"] = data.RawField()
+    for x in ds:
+      x.rawent = x.ent.split(" ; ")
+      x.ent = self.vec_ents(x.ent,self.ENT)
+      x.rel = self.mkGraphs(x.rel,len(x.ent[1]))
+      if args.sparse:
+        x.rel = (self.adjToSparse(x.rel[0]),x.rel[1])
+      x.tgt = x.out
+      x.out = [y.split("_")[0]+">" if "_" in y else y for y in x.out]
+      x.sordertgt = torch.LongTensor([int(y)+3 for y in x.sorder.split(" ")])
+      x.sorder = [[int(z) for z in y.strip().split(" ")] for y in x.sorder.split("-1")[:-1]]
+    ds.fields["tgt"] = self.TGT
+    ds.fields["rawent"] = data.RawField()
+    ds.fields["sordertgt"] = data.RawField()
+    dat_iter = data.Iterator(ds,1,device=args.device,sort_key=lambda x:len(x.src), train=False, sort=False)
+    return dat_iter
 
   def rev_ents(self,batch):
     vocab = self.NERD.vocab
