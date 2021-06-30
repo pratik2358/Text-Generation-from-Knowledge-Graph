@@ -27,12 +27,7 @@ def pargs():
   parser.add_argument("-drop",default=0.1,type=float,help="dropout rate")
   parser.add_argument("-embdrop",default=0,type=float,help="embedding dropout")
   parser.add_argument("-layers",default=2,type=int,help='encoder lstm layers')
-  #parser.add_argument("-blockdrop",default=0.1)
-  #parser.add_argument("-gdrop",default=0.3,type=float)
-  #parser.add_argument("-attnheads",default=3,type=int,
-  #parser.add_argument("-elmoVocab",default="../data/elmoVocab.txt",type=str)
-  #parser.add_argument("-elmo",action='store_true')
-  #parser.add_argument("-heads",default=4,type=int)
+ 
 
 
 
@@ -64,7 +59,7 @@ def pargs():
   parser.add_argument("-lrdecay",action="store_true",help="use learning rate decay")
 
 
-  #parser.add_argument('-max_grad_norm', type=int, default=1)
+  
 
   #data
   parser.add_argument("-nosave",action='store_false',help='dont save')
@@ -88,11 +83,7 @@ def pargs():
   #parser.add_argument("-sample",action='store_true')
   parser.add_argument("-inputs",default="../data/fullGraph.test.tsv",type=str)
 
-
-  parser.add_argument("-sparse",action='store_true',help="sparse graphs (NOT CURRENTLY IMPLEMENTED)")
-  parser.add_argument("-plan",action='store_true',help="plan and write (NOT IMPLEMENTED)")
   parser.add_argument("-ckpt",default=None,type=str,help='load checkpoint')
-  parser.add_argument("-plweight",default=0.2,type=float,help="plan weight (NOT IMPLEMENTED)")
   parser.add_argument("-entdetach",action='store_true',help='dont backprop into entity embeddings')
 
   parser.add_argument("-gpu",default=0,type=int)
@@ -101,7 +92,6 @@ def pargs():
     args.gpu = 'cpu'
   args.device = torch.device(args.gpu)
 
-  #args.options_file = "../elmo/elmo_2x2048_256_2048cnn_1xhighway_options.json"
-  #args.weight_file = "../elmo/elmo_2x2048_256_2048cnn_1xhighway_weights.hdf5"
+
 
   return args
