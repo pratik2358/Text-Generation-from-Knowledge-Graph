@@ -23,7 +23,7 @@ def test(args,ds,m,epoch='cmdline'):
   ofn = "outputs/"+model+".beam_predictions"
   m.eval()
   k = 0
-  data = ds.mktestset(args)
+  data = ds.mktestset2(args)
   ofn = "outputs/"+model+".inputs.beam_predictions."+epoch
   pf = open(ofn,'w')
   preds = []
